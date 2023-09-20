@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <ImageView
+        android:id="@+id/img_barkuni"
+        android:layout_width="400px"
+        android:layout_height="400px"
+        android:src="@drawable/barkuni_main"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        />
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_below="@+id/img_barkuni"
+    android:layout_centerHorizontal="true"
+    android:gravity="center_horizontal"
+    >
+    <Button
+        android:id="@+id/btn_sound_bevadai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="בוודאיייי"
+        android:layout_margin="20px"
+        android:onClick="playSound"
+        />
+    <Button
+        android:id="@+id/btn_sound_efes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="אפס"
+        android:layout_margin="20px"
+        android:onClick="playSound"
+        />
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/btn_sound_halvia_shelcha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="אף אחד לא בא להלוויה שלך"
+            android:layout_margin="20px"
+            android:onClick="playSound"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>
