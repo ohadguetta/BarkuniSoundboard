@@ -2,26 +2,28 @@ package com.example.barkunisoundboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.AssetFileDescriptor;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
+import android.service.controls.Control;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.SeekBar;
 
-import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
 
     SoundPool soundPool;
-    int sound_bevadai,
-            sound_efes,
-            sound_yellingEviatar,
-            sound_halvia_shelcha;
+    int[] sounds;
+    float volume;
+    SeekBar volumeControl;
+
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -29,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+        int progressSaved = sharedPreferences.getInt("volumeSaved",50);
+        volume = (float)(progressSaved/100);
+        volumeControl = findViewById(R.id.volumeControl);
+        volumeControl.setProgress(progressSaved,true);
+        volumeControl.setOnSeekBarChangeListener(this);
 
         AudioAttributes
                 audioAttributes
@@ -52,30 +59,98 @@ public class MainActivity extends AppCompatActivity {
         // This load function takes
         // three parameter context,
         // file_name and priority.
-        sound_bevadai = soundPool.load(this, R.raw.bevadai, 1);
-        sound_halvia_shelcha = soundPool.load(this, R.raw.halvia_shelcha, 1);
+        sounds = new int[11];
+        sounds[0] = soundPool.load(this, R.raw.bevadai, 1);
+        sounds[1] = soundPool.load(this, R.raw.halvia_shelcha, 1);
+        sounds[2] = soundPool.load(this, R.raw.pitoomzevel, 1);
+        sounds[3] = soundPool.load(this, R.raw.efes_silent, 1);
+        sounds[4] = soundPool.load(this, R.raw.altaaneli, 1);
+        sounds[5] = soundPool.load(this, R.raw.pgishamaosim, 1);
+        sounds[6] = soundPool.load(this, R.raw.odpgisha, 1);
+        sounds[7] = soundPool.load(this, R.raw.biltinitanlesipuk, 1);
+        sounds[8] = soundPool.load(this, R.raw.cantforme, 1);
+        sounds[9] = soundPool.load(this, R.raw.lenadevmeida, 1);
+        sounds[10] =  soundPool.load(this, R.raw.gamlotov, 1);
+
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     public void playSound(View v){
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         switch (v.getId()) {
             case R.id.btn_sound_bevadai:
-
-                // This play function
-                // takes five parameter
-                // leftVolume, rightVolume,
-                // priority, loop and rate.
 //                soundPool.autoPause();
                 soundPool.play(
-                        sound_bevadai, 1, 1, 1, 0, 1);
+                        sounds[0],volume,volume, 1, 0, 1);
                 break;
             case R.id.btn_sound_halvia_shelcha:
                 soundPool.play(
-                        sound_halvia_shelcha, 1, 1, 1, 0, 1);
+                        sounds[1],volume,volume, 1, 0, 1);
                 break;
+            case R.id.btn_sound_pitoomzevel:
+                soundPool.play(
+                        sounds[2],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_efes:
+                soundPool.play(
+                        sounds[3],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_altaaneli:
+                soundPool.play(
+                        sounds[4],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_pgishamaosim:
+                soundPool.play(
+                        sounds[5],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_odpgisha:
+                soundPool.play(
+                        sounds[6],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_biltinitanlesipuk:
+                soundPool.play(
+                        sounds[7],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_cantforme:
+                soundPool.play(
+                        sounds[8],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_lenadevmeida:
+                soundPool.play(
+                        sounds[9],volume,volume, 1, 0, 1);
+                break;
+            case R.id.btn_sound_gamlotov:
+                soundPool.play(
+                        sounds[10],volume,volume, 1, 0, 1);
+                break;
+
+
 
         }
     }
 
 
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+        if(b){
+//            AudioManager systemService = (AudioManager) (getSystemService(Context.AUDIO_SERVICE));
+//            double dryVolume = (double) i / (double) ;
+            volume = (float)(i/100f);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("volumeSaved",i);
+            editor.apply();
+
+        }
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
 }

@@ -13,7 +13,28 @@
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
         />
-<LinearLayout android:layout_height="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/volume_icon"
+            android:layout_marginStart="10dp"
+            />
+        <SeekBar
+            android:id="@+id/volumeControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:layout_below="@+id/img_barkuni"
     android:layout_centerHorizontal="true"
@@ -24,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="בוודאיייי"
-        android:layout_margin="20px"
+        android:layout_margin="10px"
         android:onClick="playSound"
         />
     <Button
@@ -32,10 +53,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="אפס"
-        android:layout_margin="20px"
+        android:layout_margin="10px"
         android:onClick="playSound"
         />
-
+    <Button
+        android:id="@+id/btn_sound_pitoomzevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="פתאום זבל"
+        android:layout_margin="10px"
+        android:onClick="playSound"
+        />
 
 </LinearLayout>
     <LinearLayout
@@ -47,10 +75,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="אף אחד לא בא להלוויה שלך"
-            android:layout_margin="20px"
+            android:layout_margin="10px"
             android:onClick="playSound"
 
             />
+        <Button
+            android:id="@+id/btn_sound_altaaneli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="אל תענה לי"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/btn_sound_odpgisha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מה עוד פגישה??"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+
+            />
+        <Button
+            android:id="@+id/btn_sound_pgishamaosim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מתעצבן על פגישות"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+            />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/btn_sound_biltinitanlesipuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="בלתי ניתן לסיפוק"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+
+            />
+        <Button
+            android:id="@+id/btn_sound_cantforme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="לא יכול לעשות בשבילי"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/btn_sound_lenadevmeida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="לא יכול לנדב מידע"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+
+            />
+        <Button
+            android:id="@+id/btn_sound_gamlotov"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="גם לא טוב לך אביתר"
+            android:layout_margin="10px"
+            android:onClick="playSound"
+            />
+
+    </LinearLayout>
+
 </LinearLayout>
